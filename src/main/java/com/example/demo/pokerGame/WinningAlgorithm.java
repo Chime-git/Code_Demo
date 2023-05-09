@@ -5,22 +5,22 @@ package com.example.demo.pokerGame;
  * AAA means three cards have the same number，Three of kind
  * ABC means straight
  * m or n can equal to 0
- *
- * using recursion to do this job
+ * <p>
+ * Using recursion to do this job
  */
 public class WinningAlgorithm {
 
     private CardInHand[] cards;
-    private static final int FIXED_COUNT_OF_MELDED = 4;
-
     private int successMeldedCount = 0;
 
+    private static final int FIXED_COUNT_OF_MELDED = 4;
+
     public boolean isWinTheGame() {
-        return tryBuildAnTripleMeldUnit( null);
+        return tryBuildAnThreeMeldedUnit(null);
     }
 
 
-    private boolean tryBuildAnTripleMeldUnit(MixCardsUnit lastSuccessMeldUnit) {
+    private boolean tryBuildAnThreeMeldedUnit(MixCardsUnit lastSuccessMeldUnit) {
         if (successMeldedCount == FIXED_COUNT_OF_MELDED) {
             return true;
         }
@@ -32,14 +32,14 @@ public class WinningAlgorithm {
                 if (hasMeldedWithOthers(cards[j])) {
                     continue;
                 }
-                MixCardsUnit thisSuccessMeldedUnit = findThirdCardToMeld(j+1, cards[i], cards[j]);
-                if (thisSuccessMeldedUnit == null){
+                MixCardsUnit newSuccessMeldedUnit = findThirdCardToMeld(j + 1, cards[i], cards[j]);
+                if (newSuccessMeldedUnit == null) {
                     continue;
                 }
                 addMeldedCountForSuccess();
-                setMeldedForSuccess(thisSuccessMeldedUnit);
-                boolean  recursionOneMoreMeld  = tryBuildAnTripleMeldUnit(thisSuccessMeldedUnit);
-                if (recursionOneMoreMeld){
+                setMeldedUnitForSuccess(newSuccessMeldedUnit);
+                boolean recursionOneMoreMeld = tryBuildAnThreeMeldedUnit(newSuccessMeldedUnit);
+                if (recursionOneMoreMeld) {
                     return true;
                 }
             }
@@ -48,42 +48,41 @@ public class WinningAlgorithm {
         return false;
     }
 
-    private void rollBackForFailedOneMoreMeldUnit(MixCardsUnit lastSuccessMeldUnit){
+    private void rollBackForFailedOneMoreMeldUnit(MixCardsUnit lastSuccessMeldUnit) {
         rollBackMeldedCount();
-        rollBackMelded(lastSuccessMeldUnit);
+        rollBackMeldedUnit(lastSuccessMeldUnit);
     }
 
-    private void rollBackMelded(MixCardsUnit mixCardsUnit) {
-        if (mixCardsUnit != null){
+    private void rollBackMeldedUnit(MixCardsUnit mixCardsUnit) {
+        if (mixCardsUnit != null) {
             mixCardsUnit.setMixCardsAllNotMelded();
         }
     }
 
-    private void setMeldedForSuccess(MixCardsUnit successMeldedUnit) {
+    private void setMeldedUnitForSuccess(MixCardsUnit successMeldedUnit) {
         successMeldedUnit.setMixCardsAllMelded();
     }
 
-    private void rollBackMeldedCount(){
+    private void rollBackMeldedCount() {
         successMeldedCount -= 1;
     }
 
-    private MixCardsUnit findThirdCardToMeld(int startIndex, CardInHand firstCard, CardInHand secondCard){
+    private MixCardsUnit findThirdCardToMeld(int startIndex, CardInHand card1, CardInHand card2) {
         for (int k = startIndex; k < cards.length; k++) {
             if (hasMeldedWithOthers(cards[k])) {
                 continue;
             }
-            MixCardsUnit mixThreeCards = new MixThreeCardsUnit(firstCard, secondCard, cards[k]);
-            boolean isSuccessBeAnUnit = isSuccessBeAnUnit(mixThreeCards);
-            if (isSuccessBeAnUnit) {
+            MixCardsUnit mixThreeCards = new MixThreeCardsUnit(card1, card2, cards[k]);
+            boolean successBeAnUnit = isSuccessBeMeldedUnit(mixThreeCards);
+            if (successBeAnUnit) {
                 return mixThreeCards;
             }
         }
         return null;
     }
 
-    private void addMeldedCountForSuccess(){
+    private void addMeldedCountForSuccess() {
         successMeldedCount += 1;
-       
     }
 
 
@@ -91,7 +90,7 @@ public class WinningAlgorithm {
         return card.isHasMelded();
     }
 
-    private boolean isSuccessBeAnUnit(MixCardsUnit mix) {
+    private boolean isSuccessBeMeldedUnit(MixCardsUnit mix) {
         return mix.isStraightOrKind();
     }
 

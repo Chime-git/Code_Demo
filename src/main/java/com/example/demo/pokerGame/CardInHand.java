@@ -1,10 +1,11 @@
 package com.example.demo.pokerGame;
 
+import lombok.Getter;
 import lombok.Setter;
 
 @Setter
-public class CardInHand extends Card{
-
+@Getter
+public class CardInHand extends Card {
 
     private boolean hasMelded;
 
@@ -12,12 +13,4 @@ public class CardInHand extends Card{
         super(number, suit);
         this.hasMelded = false;
     }
-
-    public boolean isHasMelded() {
-        return hasMelded;
-    }
-    public void setHasMelded(boolean hasMelded) {
-        this.hasMelded = hasMelded;
-    }
-
 }
