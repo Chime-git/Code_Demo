@@ -13,7 +13,6 @@ public class WinningAlgorithm {
     private CardInHand[] cards;
     private static final int FIXED_COUNT_OF_MELDED = 4;
 
-
     private int successMeldedCount = 0;
 
     public boolean isWinTheGame() {
@@ -37,22 +36,35 @@ public class WinningAlgorithm {
                 if (thisSuccessMeldedUnit == null){
                     continue;
                 }
-                setAfterSuccessMelded(thisSuccessMeldedUnit);
+                addMeldedCountForSuccess();
+                setMeldedForSuccess(thisSuccessMeldedUnit);
                 boolean  recursionOneMoreMeld  = tryBuildAnTripleMeldUnit(thisSuccessMeldedUnit);
                 if (recursionOneMoreMeld){
                     return true;
                 }
             }
         }
-        rollBackAfterFailedMelded(lastSuccessMeldUnit);
+        rollBackForFailedOneMoreMeldUnit(lastSuccessMeldUnit);
         return false;
     }
 
-    private void rollBackAfterFailedMelded(MixCardsUnit lastSuccessMeldUnit){
-        successMeldedCount -= 1;
-        if (lastSuccessMeldUnit != null){
-            lastSuccessMeldUnit.setMixCardsAllNotMelded();
+    private void rollBackForFailedOneMoreMeldUnit(MixCardsUnit lastSuccessMeldUnit){
+        rollBackMeldedCount();
+        rollBackMelded(lastSuccessMeldUnit);
+    }
+
+    private void rollBackMelded(MixCardsUnit mixCardsUnit) {
+        if (mixCardsUnit != null){
+            mixCardsUnit.setMixCardsAllNotMelded();
         }
+    }
+
+    private void setMeldedForSuccess(MixCardsUnit successMeldedUnit) {
+        successMeldedUnit.setMixCardsAllMelded();
+    }
+
+    private void rollBackMeldedCount(){
+        successMeldedCount -= 1;
     }
 
     private MixCardsUnit findThirdCardToMeld(int startIndex, CardInHand firstCard, CardInHand secondCard){
@@ -69,9 +81,9 @@ public class WinningAlgorithm {
         return null;
     }
 
-    private void setAfterSuccessMelded(MixCardsUnit melded){
+    private void addMeldedCountForSuccess(){
         successMeldedCount += 1;
-        melded.setMixCardsAllMelded();
+       
     }
 
 
