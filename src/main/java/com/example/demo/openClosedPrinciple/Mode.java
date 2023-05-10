@@ -1,5 +1,5 @@
 package com.example.demo.openClosedPrinciple;
 
-public enum PayType {
+public enum Mode {
         CASH, CREDIT,E_PAY, VOUCHER
 }

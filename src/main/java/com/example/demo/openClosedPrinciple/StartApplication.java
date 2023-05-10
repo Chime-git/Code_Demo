@@ -16,7 +16,7 @@ public class StartApplication {
 
     @GetMapping("/testOCP")
     public String testOCP(@RequestParam(value = "type") String type){
-        Payment payment = PaymentFactory.getPaymentByUserType(PayType.valueOf(type.toUpperCase()));
+        Payment payment = PaymentModeFactory.getPaymentByMode(Mode.valueOf(type.toUpperCase()));
         return  payment.pay() ;
     }
 }

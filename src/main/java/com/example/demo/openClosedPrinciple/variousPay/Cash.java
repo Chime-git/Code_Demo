@@ -1,19 +1,19 @@
 package com.example.demo.openClosedPrinciple.variousPay;
 
-import com.example.demo.openClosedPrinciple.PayType;
-import com.example.demo.openClosedPrinciple.PaymentImp;
+import com.example.demo.openClosedPrinciple.Mode;
+import com.example.demo.openClosedPrinciple.PaymentImpl;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Cash extends PaymentImp {
+public class Cash extends PaymentImpl {
     @Override
     public String pay() {
-        return "CASH has been payed";
+        return "CASH";
     }
 
     @Override
-    public void setType() {
-        this.type = PayType.CASH;
+    public void setMode() {
+        this.mode = Mode.CASH;
     }
 
 }

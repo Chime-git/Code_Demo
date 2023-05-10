@@ -17,7 +17,7 @@ class CashTest {
 
     @Test
     void isCashPayEqualsCash() {
-        Assertions.assertSame("CASH has been payed", cash.pay());
+        Assertions.assertSame("CASH", cash.pay());
 
     }
 }
