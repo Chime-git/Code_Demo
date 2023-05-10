@@ -1,5 +1,7 @@
 package com.example.demo.pokerGame;
 
+import com.example.demo.pokerGame.entity.CardInHand;
+
 public abstract class MixCardsUnit {
 
     protected CardInHand[] mixCards;

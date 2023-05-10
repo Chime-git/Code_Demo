@@ -1,5 +1,7 @@
 package com.example.demo.pokerGame;
 
+import com.example.demo.pokerGame.entity.Card;
+
 public class ComparatorBaseNumber implements Comparator {
 
     @Override

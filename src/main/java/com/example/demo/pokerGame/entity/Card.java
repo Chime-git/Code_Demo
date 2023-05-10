@@ -1,8 +1,10 @@
-package com.example.demo.pokerGame;
+package com.example.demo.pokerGame.entity;
 
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class Card {
     private final int number;
     private final Suits suit;

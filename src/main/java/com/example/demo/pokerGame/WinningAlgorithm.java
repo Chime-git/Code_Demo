@@ -1,5 +1,7 @@
 package com.example.demo.pokerGame;
 
+import com.example.demo.pokerGame.entity.CardInHand;
+
 /**
  * Giving 12 cards which match <m*AAA+n*ABC, m+n=4> then win
  * AAA means three cards have the same number，Three of kind
@@ -47,7 +49,7 @@ public class WinningAlgorithm {
         rollBackForFailedOneMoreMeldUnit(lastSuccessMeldUnit);
         return false;
     }
-    
+
     private void rollBackForFailedOneMoreMeldUnit(MixCardsUnit lastSuccessMeldUnit) {
         rollBackMeldedCount();
         rollBackMeldedUnit(lastSuccessMeldUnit);

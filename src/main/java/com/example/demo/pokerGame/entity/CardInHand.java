@@ -1,4 +1,4 @@
-package com.example.demo.pokerGame;
+package com.example.demo.pokerGame.entity;
 
 import lombok.Getter;
 import lombok.Setter;

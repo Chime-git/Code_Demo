@@ -1,6 +1,8 @@
 package com.example.demo.pokerGame;
 
 
+import com.example.demo.pokerGame.entity.CardInHand;
+
 public class MixThreeCardsUnit extends MixCardsUnit {
 
     public MixThreeCardsUnit(CardInHand card0, CardInHand card1, CardInHand card2) {

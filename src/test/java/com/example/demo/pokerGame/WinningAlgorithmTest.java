@@ -1,5 +1,7 @@
 package com.example.demo.pokerGame;
 
+import com.example.demo.pokerGame.entity.CardInHand;
+import com.example.demo.pokerGame.entity.Suits;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
