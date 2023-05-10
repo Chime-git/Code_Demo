@@ -5,7 +5,7 @@ This is a simple demo that includes two separate tasks.
 ## Open Closed Principle using Springboot
 
 This task demonstrates the _**Open Closed Principle**_ using the Spring Boot framework. The Open Closed Principle is a fundamental principle of object-oriented programming, which states that software entities (classes, modules, functions, etc.) should be open for extension but closed for modification.
-When add a new Pay type, for example` E-pay`,  could just adding `Epay.class` in `com.example.demo.OpenClosedPrinciple.variousPay` package, just like `Cash.class`, without changing any other classes.
+Regarding this project, when adding a new Pay mode, for example` E-pay`,  could just adding `Epay.class` in `com.example.demo.OpenClosedPrinciple.variousPay` package, just like `Cash.class`, without changing any other classes.
 
 To run this task, you need to have Java Development Kit (JDK) version 18 or higher and Maven installed on your machine. You can download the JDK from the official Oracle website and install Maven from the Apache Maven website.
 
