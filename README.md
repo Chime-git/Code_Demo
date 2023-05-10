@@ -16,7 +16,7 @@ Once you have the JDK and Maven installed, you can download the source code from
 This task demonstrates how to identify if a player wins when given 12 cards in a poker game. 
 The main class for this task is `com.example.demo.pokerGame.WinningAlgorithm`, in which using _**recursive algorithm**_ to do this task.
 
-Running _`com.example.demo.pokerGame.WinningAlgorithmTest.java`_ to demonstrate several  scenarios.
+With Junit5, Running _`com.example.demo.pokerGame.WinningAlgorithmTest.java`_ to demonstrate several  scenarios.
 
 # Credits
 This project was developed by _Zhuan Wang(Chime)_.
