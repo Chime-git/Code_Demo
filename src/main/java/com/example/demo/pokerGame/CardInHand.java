@@ -11,6 +11,5 @@ public class CardInHand extends Card {
 
     public CardInHand(int number, Suits suit) {
         super(number, suit);
-        this.hasMelded = false;
     }
 }
