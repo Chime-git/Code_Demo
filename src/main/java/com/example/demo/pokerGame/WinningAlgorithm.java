@@ -47,7 +47,7 @@ public class WinningAlgorithm {
         rollBackForFailedOneMoreMeldUnit(lastSuccessMeldUnit);
         return false;
     }
-
+    
     private void rollBackForFailedOneMoreMeldUnit(MixCardsUnit lastSuccessMeldUnit) {
         rollBackMeldedCount();
         rollBackMeldedUnit(lastSuccessMeldUnit);

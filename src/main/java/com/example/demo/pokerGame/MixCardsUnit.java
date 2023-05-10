@@ -4,6 +4,8 @@ public abstract class MixCardsUnit {
 
     protected CardInHand[] mixCards;
 
+    protected Comparator comparator;
+
 
     protected void setMixCardsAllMelded() {
         setMixCardsMeldedStatus(true);
@@ -30,7 +32,7 @@ public abstract class MixCardsUnit {
         int n = mixCards.length;
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
-                boolean isPreBiggerThanNext = Relationship.isPreBiggerThanNext(mixCards[j], mixCards[j + 1]);
+                boolean isPreBiggerThanNext = comparator.isPreBiggerThanNext(mixCards[j], mixCards[j + 1]);
                 if (isPreBiggerThanNext) {
                     CardInHand temp = mixCards[j];
                     mixCards[j] = mixCards[j + 1];
@@ -42,7 +44,7 @@ public abstract class MixCardsUnit {
 
     private boolean isKind() {
         for (int i = 0; i < mixCards.length - 1; i++) {
-            boolean isSameKind = Relationship.isEqual(mixCards[i], mixCards[i + 1]);
+            boolean isSameKind = comparator.isEqual(mixCards[i], mixCards[i + 1]);
             if (!isSameKind) {
                 return false;
             }
@@ -52,7 +54,7 @@ public abstract class MixCardsUnit {
 
     private boolean isStraight() {
         for (int i = 0; i < mixCards.length - 1; i++) {
-            boolean isAdjacent = Relationship.isAscendingAdjacent(mixCards[i], mixCards[i + 1]);
+            boolean isAdjacent = comparator.isAscendingAdjacent(mixCards[i], mixCards[i + 1]);
             if (!isAdjacent) {
                 return false;
             }
